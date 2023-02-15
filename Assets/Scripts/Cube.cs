@@ -1,15 +1,16 @@
 using UnityEngine;
+using TMPro;
 
 public class Cube : MonoBehaviour
 {
     public int bulletsNeeded = 3; // The number of bullets needed to destroy the cube
 
-    private TextMesh numberTextMesh; // The TextMesh component used to display the number
+    private TextMeshProUGUI numberTextMesh; // The TextMesh component used to display the number
 
     void Start()
     {
         // Get the TextMesh component from the cube's child object
-        numberTextMesh = GetComponentInChildren<TextMesh>();
+        numberTextMesh = GetComponentInChildren<TextMeshProUGUI>();
         // Set the text to display the number of bullets needed
         numberTextMesh.text = bulletsNeeded.ToString();
     }
