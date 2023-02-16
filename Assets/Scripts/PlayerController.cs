@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime; // The next time that the player is allowed to fire
 
     public float speed;
+    public float horizontalSpeed;
+
 
     private Rigidbody rb; // Reference to the player's Rigidbody component
 
@@ -31,11 +33,31 @@ public class PlayerController : MonoBehaviour
             currentBullets--; // Decrease the number of available bullets by 1
             nextFireTime = Time.time + fireRate; // Set the next fire time to the current time plus the fire rate
         }
+
+        MovePlayerWithTouch();
     }
 
     private void FixedUpdate()
     {
         MovePlayerForward(speed, rb);
+    }
+
+    void MovePlayerWithTouch()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.position.x < Screen.width / 2)
+            {
+                // Touch is on the left side of the screen, move player left
+                transform.position += Vector3.left * horizontalSpeed * Time.deltaTime;
+            }
+            else
+            {
+                // Touch is on the right side of the screen, move player right
+                transform.position += Vector3.right * horizontalSpeed * Time.deltaTime;
+            }
+        }
     }
 
     void FireBullet()
@@ -65,6 +87,14 @@ public class PlayerController : MonoBehaviour
                 currentBullets = maxBullets; // Ensure that the number of available bullets doesn't exceed the maximum
             }
             Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Cube"))
+        {
+            Destroy(gameObject); // Destroy the bullet when it hits a cube
         }
     }
 }
