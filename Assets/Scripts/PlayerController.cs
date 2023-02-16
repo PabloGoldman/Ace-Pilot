@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float horizontalSpeed;
 
-
     private Rigidbody rb; // Reference to the player's Rigidbody component
 
     void Start()

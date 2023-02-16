@@ -3,7 +3,7 @@ using TMPro;
 
 public class Cube : MonoBehaviour
 {
-    public int bulletsNeeded = 3; // The number of bullets needed to destroy the cube
+    private int bulletsNeeded = 3; // The number of bullets needed to destroy the cube
 
     private TextMeshProUGUI numberTextMesh; // The TextMesh component used to display the number
 
@@ -15,11 +15,15 @@ public class Cube : MonoBehaviour
         numberTextMesh.text = bulletsNeeded.ToString();
     }
 
+    public void SetBulletRequirement(int setBulletNumber)
+    {
+        bulletsNeeded = setBulletNumber;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("asd");
             bulletsNeeded--; // Decrease the number of bullets needed by 1
             numberTextMesh.text = bulletsNeeded.ToString(); // Update the displayed number
             if (bulletsNeeded <= 0)
