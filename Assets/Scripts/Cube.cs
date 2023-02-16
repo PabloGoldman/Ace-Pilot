@@ -17,8 +17,9 @@ public class Cube : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.CompareTag("Bullet"))
         {
+            Debug.Log("asd");
             bulletsNeeded--; // Decrease the number of bullets needed by 1
             numberTextMesh.text = bulletsNeeded.ToString(); // Update the displayed number
             if (bulletsNeeded <= 0)
