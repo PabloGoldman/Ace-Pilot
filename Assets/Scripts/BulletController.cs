@@ -2,13 +2,26 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public float lifespan = 3f; // The amount of time (in seconds) the bullet will live
-    public int damage = 1; // The amount of damage the bullet deals to a cube
+    public float speed = 10f;
+    public float lifetime = 2f;
+
+    private float spawnTime;
 
     void Start()
     {
-        // Destroy the bullet after the specified lifespan has passed
-        Destroy(gameObject, lifespan);
+        spawnTime = Time.time;
+    }
+
+    void Update()
+    {
+        // Move the bullet forward
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
+
+        // Destroy the bullet if its lifetime has expired
+        if (Time.time - spawnTime > lifetime)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision collision)

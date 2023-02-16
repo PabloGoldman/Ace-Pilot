@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -41,8 +42,6 @@ public class PlayerController : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         IgnoreBulletCollisions(bullet.GetComponent<Collider>());
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        bulletRigidbody.velocity = bulletSpawn.forward * bulletSpeed;
     }
 
     public void MovePlayerForward(float speed, Rigidbody rb)
