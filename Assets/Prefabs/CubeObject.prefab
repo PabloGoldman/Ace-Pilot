@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 4747328200166631414}
   m_Layer: 0
   m_Name: CubeObject
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca2d3a9a5502e245aa0251339858352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletsNeeded: 3
 --- !u!65 &4747328200166631414
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -33,12 +33,12 @@ public class PlayerController : MonoBehaviour
             nextFireTime = Time.time + fireRate; // Set the next fire time to the current time plus the fire rate
         }
 
-        MovePlayerWithTouch();
     }
 
     private void FixedUpdate()
     {
-        MovePlayerForward(speed, rb);
+        MovePlayerForward(speed);
+        MovePlayerWithTouch();
     }
 
     void MovePlayerWithTouch()
@@ -49,12 +49,12 @@ public class PlayerController : MonoBehaviour
             if (touch.position.x < Screen.width / 2)
             {
                 // Touch is on the left side of the screen, move player left
-                transform.position += Vector3.left * horizontalSpeed * Time.deltaTime;
+                rb.MovePosition(transform.position + -transform.right * horizontalSpeed);
             }
             else
             {
                 // Touch is on the right side of the screen, move player right
-                transform.position += Vector3.right * horizontalSpeed * Time.deltaTime;
+                rb.MovePosition(transform.position + transform.right * horizontalSpeed);
             }
         }
     }
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         IgnoreBulletCollisions(bullet.GetComponent<Collider>());
     }
 
-    public void MovePlayerForward(float speed, Rigidbody rb)
+    public void MovePlayerForward(float speed)
     {
         rb.MovePosition(transform.position + transform.forward * speed);
     }
@@ -78,15 +78,15 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BulletPowerUp"))
-        {
-            currentBullets += 5; // Increase the number of available bullets by 5 when a power-up is picked up
-            if (currentBullets > maxBullets)
-            {
-                currentBullets = maxBullets; // Ensure that the number of available bullets doesn't exceed the maximum
-            }
-            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
-        }
+        //if (other.CompareTag("BulletPowerUp"))
+        //{
+        //    currentBullets += 5; // Increase the number of available bullets by 5 when a power-up is picked up
+        //    if (currentBullets > maxBullets)
+        //    {
+        //        currentBullets = maxBullets; // Ensure that the number of available bullets doesn't exceed the maximum
+        //    }
+        //    Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+        //}
     }
 
     void OnCollisionEnter(Collision collision)
