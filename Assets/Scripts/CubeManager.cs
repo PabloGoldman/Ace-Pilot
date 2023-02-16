@@ -36,7 +36,7 @@ public class CubeManager : MonoBehaviour
 
                 // instantiate row
                 GameObject cubesRow = Instantiate(rowOfCubes, transform);
-                cubesRow.transform.position = new Vector3(i * cubeSpacing, 0, currentRow * rowSpacing);
+                cubesRow.transform.position = new Vector3(0, 0, currentRow * rowSpacing);
 
                 // set random bullet requirement
 
