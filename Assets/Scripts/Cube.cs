@@ -22,14 +22,14 @@ public class Cube : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            bulletsNeeded--; // Decrease the number of bullets needed by 1
-            numberTextMesh.text = bulletsNeeded.ToString(); // Update the displayed number
-            if (bulletsNeeded <= 0)
-            {
-                Destroy(gameObject); // Destroy the cube when the required number of bullets have been hit
-            }
-        }
+        //if (collision.gameObject.CompareTag("Bullet"))
+        //{
+        //    bulletsNeeded--; // Decrease the number of bullets needed by 1
+        //    numberTextMesh.text = bulletsNeeded.ToString(); // Update the displayed number
+        //    if (bulletsNeeded <= 0)
+        //    {
+        //        Destroy(gameObject); // Destroy the cube when the required number of bullets have been hit
+        //    }
+        //}
     }
 }
