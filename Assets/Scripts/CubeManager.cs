@@ -44,6 +44,7 @@ public class CubeManager : MonoBehaviour
                 GameObject cubesRow = Instantiate(rowOfCubes, transform);
                 cubesRow.transform.position = new Vector3(0, 0, currentRow * rowSpacing);
 
+                //SPAWNEO DE POWER UP
                 if (currentRowForPowerUp == rowsPerPowerUp)
                 {
                     int randomNumber = Random.Range(1, 100);

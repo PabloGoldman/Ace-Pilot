@@ -15,7 +15,7 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         // Move the bullet forward
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
         // Destroy the bullet if its lifetime has expired
         if (Time.time - spawnTime > lifetime)

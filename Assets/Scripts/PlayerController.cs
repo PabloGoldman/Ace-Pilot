@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb; // Reference to the player's Rigidbody component
 
+    public GameObject bulletsTarget;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -61,6 +63,9 @@ public class PlayerController : MonoBehaviour
     void FireBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+
+        bullet.transform.LookAt(bulletsTarget.transform.position);
+
         IgnoreBulletCollisions(bullet.GetComponent<Collider>());
     }
 
