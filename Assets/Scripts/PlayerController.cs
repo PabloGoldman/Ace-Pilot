@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,8 +9,6 @@ public class PlayerController : MonoBehaviour
     public Transform bulletSpawn; // The transform representing the position to spawn bullets
     public float bulletSpeed = 10f; // The speed at which bullets will travel
     public float fireRate = 0.5f; // The time (in seconds) between each shot
-    public int maxBullets = 10; // The maximum number of bullets the player can have
-    public int currentBullets; // The current number of bullets the player has
 
     private float nextFireTime; // The next time that the player is allowed to fire
 
@@ -20,19 +20,18 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        currentBullets = maxBullets; // Set the initial number of bullets to the maximum
         nextFireTime = Time.time; // Set the initial next fire time to the current time
     }
 
     void Update()
     {
-        if (Time.time >= nextFireTime && currentBullets > 0)
+        speed += Time.deltaTime / 1800; //Este numero cuanto mas chico es mas acelera xd
+
+        if (Time.time >= nextFireTime)
         {
             FireBullet(); // Fire a bullet if enough time has passed and the player has bullets
-            currentBullets--; // Decrease the number of available bullets by 1
             nextFireTime = Time.time + fireRate; // Set the next fire time to the current time plus the fire rate
         }
-
     }
 
     private void FixedUpdate()
@@ -49,12 +48,12 @@ public class PlayerController : MonoBehaviour
             if (touch.position.x < Screen.width / 2)
             {
                 // Touch is on the left side of the screen, move player left
-                rb.MovePosition(transform.position + -transform.right * horizontalSpeed);
+                rb.AddForce(-transform.right * horizontalSpeed);
             }
             else
             {
                 // Touch is on the right side of the screen, move player right
-                rb.MovePosition(transform.position + transform.right * horizontalSpeed);
+                rb.AddForce(transform.right * horizontalSpeed);
             }
         }
     }
@@ -78,15 +77,34 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //if (other.CompareTag("BulletPowerUp"))
-        //{
-        //    currentBullets += 5; // Increase the number of available bullets by 5 when a power-up is picked up
-        //    if (currentBullets > maxBullets)
-        //    {
-        //        currentBullets = maxBullets; // Ensure that the number of available bullets doesn't exceed the maximum
-        //    }
-        //    Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
-        //}
+        if (other.CompareTag("PowerUp"))
+        {
+            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+            fireRate *= 0.7f;
+        }
+
+        if (other.CompareTag("SuperPowerUp"))
+        {
+            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+            StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, 4));
+        }
+    }
+
+    void SetFireRateToNormal(float normalFireRate)
+    {
+        fireRate = normalFireRate;
+    }
+
+    IEnumerator SetFireRateToSuperPowerUp(float normalFireRate, float newFireRate, float superPowerUpTime)
+    {
+        fireRate = newFireRate;
+        yield return new WaitForSeconds(superPowerUpTime);
+        SetFireRateToNormal(normalFireRate);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -94,6 +112,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Cube"))
         {
             Destroy(gameObject); // Destroy the bullet when it hits a cube
+            RestartGame();
         }
     }
 }

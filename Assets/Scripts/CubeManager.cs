@@ -6,16 +6,22 @@ public class CubeManager : MonoBehaviour
 {
     public int cubesPerRow = 5; // number of cubes in each row
     public float rowSpacing = 2.0f; // space between each row
-    public float cubeSpacing = 1.0f; // space between each cube
 
     public int rowsPerInstantiate = 2;
-
-    public GameObject rowOfCubes;
-    private List<List<GameObject>> cubes;
-
     public float rowSpawningTime = 2;
 
+    public GameObject rowOfCubes;
+    public List<GameObject> powerUp;
+    private List<List<GameObject>> cubes;
+
     private int currentRow = 0;
+
+    private int minimunBulletRequirement = 2;
+    private int maximumBulletRequirement = 10;
+
+
+    public int rowsPerPowerUp = 5;
+    private int currentRowForPowerUp = 0;
 
     void Start()
     {
@@ -38,17 +44,39 @@ public class CubeManager : MonoBehaviour
                 GameObject cubesRow = Instantiate(rowOfCubes, transform);
                 cubesRow.transform.position = new Vector3(0, 0, currentRow * rowSpacing);
 
+                if (currentRowForPowerUp == rowsPerPowerUp)
+                {
+                    int randomNumber = Random.Range(1, 100);
+
+                    float randomPosX = Random.Range(-4f, 3.5f);
+
+                    if (randomNumber > 10)
+                    {
+                        Instantiate(powerUp[0], new Vector3(randomPosX, 0, cubesRow.transform.position.z + rowSpacing / 2), transform.rotation);
+                    }
+                    else
+                    {
+                        Instantiate(powerUp[1], new Vector3(randomPosX, 0, cubesRow.transform.position.z + rowSpacing / 2), transform.rotation);
+                    }
+
+                    currentRowForPowerUp = 0;
+
+                    minimunBulletRequirement += 2;
+                    maximumBulletRequirement += 4;
+                }
+
                 // set random bullet requirement
 
                 foreach (var cube in cubesRow.GetComponentsInChildren<Cube>())
                 {
-                    int bulletRequirement = Random.Range(2, 11);
+                    int bulletRequirement = Random.Range(minimunBulletRequirement, maximumBulletRequirement);
                     cube.GetComponent<Cube>().SetBulletRequirement(bulletRequirement);
                 }
 
                 cubes[currentRow].Add(cubesRow);
 
                 currentRow++;
+                currentRowForPowerUp++;
             }
 
             // wait for some time before spawning more cubes
