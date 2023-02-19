@@ -22,7 +22,7 @@ public class RowOfCubes : MonoBehaviour
         activeObjects.Clear();
 
         // randomly choose a number of child objects to activate
-        int numActiveObjects = Random.Range(0, maxActiveObjects + 1);
+        int numActiveObjects = Random.Range(1, maxActiveObjects + 1);
 
         // randomly choose which child objects to activate
         List<GameObject> remainingObjects = new List<GameObject>(childObjects);

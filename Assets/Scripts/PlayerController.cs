@@ -50,12 +50,12 @@ public class PlayerController : MonoBehaviour
             if (touch.position.x < Screen.width / 2)
             {
                 // Touch is on the left side of the screen, move player left
-                rb.AddForce(-transform.right * horizontalSpeed);
+                rb.AddForce(transform.right * horizontalSpeed);
             }
             else
             {
                 // Touch is on the right side of the screen, move player right
-                rb.AddForce(transform.right * horizontalSpeed);
+                rb.AddForce(-transform.right * horizontalSpeed);
             }
         }
     }
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayerForward(float speed)
     {
-        rb.MovePosition(transform.position + transform.forward * speed);
+        rb.MovePosition(transform.position + transform.forward * -speed);
     }
 
     public void IgnoreBulletCollisions(Collider bulletCollider)
