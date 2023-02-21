@@ -6,6 +6,8 @@ public class FloorMovement : MonoBehaviour
 {
     PlayerController player;
 
+    public float offsetZ;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
@@ -16,7 +18,7 @@ public class FloorMovement : MonoBehaviour
     {
         if (player)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z + offsetZ);
         }
     }
 }
