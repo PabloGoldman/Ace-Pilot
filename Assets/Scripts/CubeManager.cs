@@ -14,6 +14,8 @@ public class CubeManager : MonoBehaviour
     public List<GameObject> powerUp;
     private List<List<GameObject>> cubes;
 
+    PlayerController player;
+
     private int currentRow = 0;
 
     private int minimunBulletRequirement = 2;
@@ -26,7 +28,7 @@ public class CubeManager : MonoBehaviour
     void Start()
     {
         cubes = new List<List<GameObject>>();
-
+        player = FindObjectOfType<PlayerController>();
         // start coroutine to spawn cubes
         StartCoroutine(SpawnCubes());
     }
@@ -42,7 +44,7 @@ public class CubeManager : MonoBehaviour
 
                 // instantiate row
                 GameObject cubesRow = Instantiate(rowOfCubes, transform);
-                cubesRow.transform.position = new Vector3(0, 0, currentRow * rowSpacing);
+                cubesRow.transform.position = new Vector3(0, player.transform.position.y, currentRow * rowSpacing);
 
                 //SPAWNEO DE POWER UP
                 if (currentRowForPowerUp == rowsPerPowerUp)
@@ -51,13 +53,15 @@ public class CubeManager : MonoBehaviour
 
                     float randomPosX = Random.Range(-4f, 3.5f);
 
+                    Vector3 spawnPosition = new Vector3(randomPosX, player.transform.position.y, cubesRow.transform.position.z + rowSpacing / 2);
+
                     if (randomNumber > 10)
                     {
-                        Instantiate(powerUp[0], new Vector3(randomPosX, 0, cubesRow.transform.position.z + rowSpacing / 2), transform.rotation);
+                        Instantiate(powerUp[0], spawnPosition, transform.rotation);
                     }
                     else
                     {
-                        Instantiate(powerUp[1], new Vector3(randomPosX, 0, cubesRow.transform.position.z + rowSpacing / 2), transform.rotation);
+                        Instantiate(powerUp[1], spawnPosition, transform.rotation);
                     }
 
                     currentRowForPowerUp = 0;
