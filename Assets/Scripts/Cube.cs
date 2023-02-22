@@ -17,7 +17,6 @@ public class Cube : MonoBehaviour
 
     public void SetBulletRequirement(int setBulletNumber)
     {
-        bulletsNeeded = setBulletNumber;
     }
 
     void OnCollisionEnter(Collision collision)
