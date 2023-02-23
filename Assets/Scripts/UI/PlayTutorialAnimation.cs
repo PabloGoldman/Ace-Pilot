@@ -15,7 +15,16 @@ public class PlayTutorialAnimation : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
         Func_PlayUIAnim();
+    }
+
+    private void Update()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void Func_PlayUIAnim()
@@ -33,13 +42,13 @@ public class PlayTutorialAnimation : MonoBehaviour
     IEnumerator Func_PlayAnimUI()
     {
         yield return new WaitForSeconds(m_Speed);
-        if (m_IndexSprite >= m_SpriteArray.Length)
-        {
-            m_IndexSprite = 0;
-        }
-        m_Image.sprite = m_SpriteArray[m_IndexSprite];
-        m_IndexSprite += 1;
-        if (IsDone == false)
-            m_CorotineAnim = StartCoroutine(Func_PlayAnimUI());
+        //if (m_IndexSprite >= m_SpriteArray.Length)
+        //{
+        //    m_IndexSprite = 0;
+        //}
+        //m_Image.sprite = m_SpriteArray[m_IndexSprite];
+        //m_IndexSprite += 1;
+        //if (IsDone == false)
+        //    m_CorotineAnim = StartCoroutine(Func_PlayAnimUI());
     }
 }
