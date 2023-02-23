@@ -8,6 +8,7 @@ TagManager:
   - Cube
   - PowerUp
   - SuperPowerUp
+  - Enemy
   layers:
   - Default
   - TransparentFX

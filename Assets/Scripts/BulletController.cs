@@ -30,5 +30,10 @@ public class BulletController : MonoBehaviour
         {
             Destroy(gameObject); // Destroy the bullet when it hits a cube
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject); // Destroy the bullet when it hits a cube
+        }
     }
 }
