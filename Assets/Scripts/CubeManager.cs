@@ -44,7 +44,19 @@ public class CubeManager : MonoBehaviour
 
                 // instantiate row
                 GameObject cubesRow = Instantiate(rowOfCubes, transform);
-                cubesRow.transform.position = new Vector3(0, player.transform.position.y, currentRow * rowSpacing);
+
+                Vector3 newCubesRowPos;
+
+                if (player)
+                {
+                    newCubesRowPos = new Vector3(0, player.transform.position.y, currentRow * rowSpacing);
+                }
+                else
+                {
+                    newCubesRowPos = new Vector3(0, 0, currentRow * rowSpacing);
+                }
+
+                cubesRow.transform.position = newCubesRowPos;
 
                 //SPAWNEO DE POWER UP
                 if (currentRowForPowerUp == rowsPerPowerUp)
@@ -53,7 +65,7 @@ public class CubeManager : MonoBehaviour
 
                     float randomPosX = Random.Range(-4f, 3.5f);
 
-                    Vector3 spawnPosition = new Vector3(randomPosX, player.transform.position.y, cubesRow.transform.position.z + rowSpacing / 2);
+                    Vector3 spawnPosition = new Vector3(randomPosX, newCubesRowPos.y, cubesRow.transform.position.z + rowSpacing / 2);
 
                     if (randomNumber > 10)
                     {
