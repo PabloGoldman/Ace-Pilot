@@ -80,20 +80,6 @@ public class PlayerController : MonoBehaviour
         Physics.IgnoreCollision(playerCollider, bulletCollider, true);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("PowerUp"))
-        {
-            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
-            fireRate *= 0.7f;
-        }
-
-        if (other.CompareTag("SuperPowerUp"))
-        {
-            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
-            StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, 4));
-        }
-    }
 
     void SetFireRateToNormal(float normalFireRate)
     {
@@ -109,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.Instance.RestartGame();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -117,7 +103,22 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Cube"))
         {
             Destroy(gameObject); // Destroy the bullet when it hits a cube
-            RestartGame();
+            ScoreManager.Instance.DisplayFinalScore();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PowerUp"))
+        {
+            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+            fireRate *= 0.7f;
+        }
+
+        if (other.CompareTag("SuperPowerUp"))
+        {
+            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+            StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, 4));
         }
     }
 }
