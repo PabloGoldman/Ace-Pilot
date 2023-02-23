@@ -24,6 +24,7 @@ public class PlayTutorialAnimation : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Time.timeScale = 1;
+            gameObject.SetActive(false);
         }
     }
 
