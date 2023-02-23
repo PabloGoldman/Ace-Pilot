@@ -37,58 +37,55 @@ public class CubeManager : MonoBehaviour
     {
         while (true)
         {
-            if (player)
+            // create two rows of cubes
+            for (int i = 0; i < rowsPerInstantiate; i++)
             {
-                // create two rows of cubes
-                for (int i = 0; i < rowsPerInstantiate; i++)
+                cubes.Add(new List<GameObject>());
+
+                // instantiate row
+                GameObject cubesRow = Instantiate(rowOfCubes, transform);
+                cubesRow.transform.position = new Vector3(0, player.transform.position.y, currentRow * rowSpacing);
+
+                //SPAWNEO DE POWER UP
+                if (currentRowForPowerUp == rowsPerPowerUp)
                 {
-                    cubes.Add(new List<GameObject>());
+                    int randomNumber = Random.Range(1, 100);
 
-                    // instantiate row
-                    GameObject cubesRow = Instantiate(rowOfCubes, transform);
-                    cubesRow.transform.position = new Vector3(0, player.transform.position.y, currentRow * rowSpacing);
+                    float randomPosX = Random.Range(-4f, 3.5f);
 
-                    //SPAWNEO DE POWER UP
-                    if (currentRowForPowerUp == rowsPerPowerUp)
+                    Vector3 spawnPosition = new Vector3(randomPosX, player.transform.position.y, cubesRow.transform.position.z + rowSpacing / 2);
+
+                    if (randomNumber > 10)
                     {
-                        int randomNumber = Random.Range(1, 100);
-
-                        float randomPosX = Random.Range(-4f, 3.5f);
-
-                        Vector3 spawnPosition = new Vector3(randomPosX, player.transform.position.y, cubesRow.transform.position.z + rowSpacing / 2);
-
-                        if (randomNumber > 10)
-                        {
-                            Instantiate(powerUp[0], spawnPosition, transform.rotation);
-                        }
-                        else
-                        {
-                            Instantiate(powerUp[1], spawnPosition, transform.rotation);
-                        }
-
-                        currentRowForPowerUp = 0;
-
-                        minimunBulletRequirement += 2;
-                        maximumBulletRequirement += 4;
+                        Instantiate(powerUp[0], spawnPosition, transform.rotation);
+                    }
+                    else
+                    {
+                        Instantiate(powerUp[1], spawnPosition, transform.rotation);
                     }
 
-                    // set random bullet requirement
+                    currentRowForPowerUp = 0;
 
-                    foreach (var cube in cubesRow.GetComponentsInChildren<Cube>())
-                    {
-                        int bulletRequirement = Random.Range(minimunBulletRequirement, maximumBulletRequirement);
-                        cube.GetComponent<Cube>().SetBulletRequirement(bulletRequirement);
-                    }
-
-                    cubes[currentRow].Add(cubesRow);
-
-                    currentRow++;
-                    currentRowForPowerUp++;
+                    minimunBulletRequirement += 2;
+                    maximumBulletRequirement += 4;
                 }
 
-                // wait for some time before spawning more cubes
-                yield return new WaitForSeconds(rowSpawningTime);
+                // set random bullet requirement
+
+                foreach (var cube in cubesRow.GetComponentsInChildren<Cube>())
+                {
+                    int bulletRequirement = Random.Range(minimunBulletRequirement, maximumBulletRequirement);
+                    cube.GetComponent<Cube>().SetBulletRequirement(bulletRequirement);
+                }
+
+                cubes[currentRow].Add(cubesRow);
+
+                currentRow++;
+                currentRowForPowerUp++;
             }
+
+            // wait for some time before spawning more cubes
+            yield return new WaitForSeconds(rowSpawningTime);
         }
     }
 }
