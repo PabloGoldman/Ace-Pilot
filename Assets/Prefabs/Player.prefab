@@ -87,6 +87,7 @@ MonoBehaviour:
   speed: 0.5
   horizontalSpeed: 45
   bulletsTarget: {fileID: 0}
+  rotationOffSet: 18
 --- !u!54 &7443141597314711561
 Rigidbody:
   m_ObjectHideFlags: 0

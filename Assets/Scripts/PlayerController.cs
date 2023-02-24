@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletsTarget;
 
+    public float rotationSpeed = 0.1f;
+    public float rotationOffSet = 25f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,13 +54,25 @@ public class PlayerController : MonoBehaviour
             {
                 // Touch is on the left side of the screen, move player left
                 rb.AddForce(transform.right * horizontalSpeed);
+
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, 180, -rotationOffSet);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             }
             else
             {
                 // Touch is on the right side of the screen, move player right
                 rb.AddForce(-transform.right * horizontalSpeed);
+
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, 180, rotationOffSet);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             }
         }
+        else
+        {
+            Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, 180, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+
     }
 
     void FireBullet()

@@ -2501,6 +2501,16 @@ PrefabInstance:
       propertyPath: bulletsTarget
       value: 
       objectReference: {fileID: 1379190348}
+    - target: {fileID: 7443141597314711562, guid: 899bcdb7c86d2f04f8775765f5d69342,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443141597314711562, guid: 899bcdb7c86d2f04f8775765f5d69342,
+        type: 3}
+      propertyPath: rotationOffSet
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7443141597314711563, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_RootOrder
