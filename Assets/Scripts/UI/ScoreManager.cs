@@ -68,7 +68,7 @@ public class ScoreManager : MonoBehaviour
     public void DisplayFinalScore()
     {
         endGamePanel.SetActive(true);
-        finalScoreText.text = "Score " + score.ToString();
+        finalScoreText.text = score.ToString();
     }
 
     void DisplayScore()
