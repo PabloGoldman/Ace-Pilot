@@ -7,14 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HeinkelHE111_HE111_BaseColor
+  m_Name: Building2
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_ValidKeywords:
+  - _DISABLE_OUTLINE
   - _EMISSIVE_SIMPLE
   - _IS_ANGELRING_OFF
   - _IS_CLIPPING_OFF
   - _IS_OUTLINE_CLIPPING_NO
-  - _OUTLINE_NML
+  - _OUTLINE_POS
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -23,7 +24,8 @@ Material:
   stringTagMap:
     IgnoreProjection: False
     RenderType: Opaque
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - ALWAYS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -124,7 +126,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: dab0427b0f7e98845b77c145c9a78aac, type: 3}
+        m_Texture: {fileID: 2800000, guid: 81bda3c8d8f921449b7fd68b36e50868, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -307,11 +309,11 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
-    - _Farthest_Distance: 227.8
+    - _Farthest_Distance: 208.3
     - _FirstShadeOverridden: 0
     - _FirstShadeVisible: 1
     - _GI_Intensity: 0
-    - _Glossiness: 1
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
@@ -368,10 +370,10 @@ Material:
     - _MaterialID: 1
     - _Metallic: 0
     - _Mode: 0
-    - _Nearest_Distance: -65
+    - _Nearest_Distance: -1186.67
     - _NormalMapSpace: 0
     - _NormalScale: 1
-    - _OUTLINE: 0
+    - _OUTLINE: 1
     - _ObjectSpaceUVMapping: 0
     - _OcclusionStrength: 1
     - _Offset_X_Axis_BLD: -0.05
@@ -379,7 +381,7 @@ Material:
     - _Offset_Z: 0
     - _OutlineOverridden: 0
     - _OutlineVisible: 1
-    - _Outline_Width: 101.87
+    - _Outline_Width: 321.49
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -464,7 +466,7 @@ Material:
     - _Unlit_Intensity: 1
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _Use_1stAs2nd: 0
+    - _Use_1stAs2nd: 1
     - _Use_BaseAs1st: 1
     - _ZOverDrawMode: 0
     - _ZTestDepthEqualForOpaque: 4
