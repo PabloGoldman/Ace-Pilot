@@ -9,6 +9,8 @@ TagManager:
   - PowerUp
   - SuperPowerUp
   - Enemy
+  - CarTrigger1
+  - CarTrigger2
   layers:
   - Default
   - TransparentFX

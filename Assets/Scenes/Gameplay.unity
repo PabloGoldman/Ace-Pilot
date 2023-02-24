@@ -2734,6 +2734,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3476641001512378661, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_TagString
+      value: CarTrigger2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942617645796483578, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_TagString
+      value: CarTrigger1
+      objectReference: {fileID: 0}
     - target: {fileID: 4137353555808376778, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
         type: 3}
       propertyPath: m_RootOrder
