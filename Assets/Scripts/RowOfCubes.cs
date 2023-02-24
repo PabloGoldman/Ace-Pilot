@@ -33,6 +33,7 @@ public class RowOfCubes : MonoBehaviour
             GameObject obj = remainingObjects[index];
             obj.SetActive(true);
 
+            //Spawnea el enemigo en una posicion relativa a la que esta
             obj.transform.position = new Vector3(obj.transform.position.x + Random.Range(-4, 4), transform.position.y, transform.position.z);
 
             activeObjects.Add(obj);
@@ -44,7 +45,7 @@ public class RowOfCubes : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 15f);
         }
     }
 }
