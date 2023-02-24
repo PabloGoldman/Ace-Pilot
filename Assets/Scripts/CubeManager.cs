@@ -45,11 +45,11 @@ public class CubeManager : MonoBehaviour
 
                 if (player)
                 {
-                    newCubesRowPos = new Vector3(0, player.transform.position.y, currentRow * rowSpacing);
+                    newCubesRowPos = new Vector3(5f, player.transform.position.y, currentRow * rowSpacing);
                 }
                 else
                 {
-                    newCubesRowPos = new Vector3(0, 0, currentRow * rowSpacing);
+                    newCubesRowPos = new Vector3(0.4f, 0, currentRow * rowSpacing);
                 }
 
                 cubesRow.transform.position = newCubesRowPos;
