@@ -32,6 +32,9 @@ public class RowOfCubes : MonoBehaviour
             int index = Random.Range(0, remainingObjects.Count);
             GameObject obj = remainingObjects[index];
             obj.SetActive(true);
+
+            obj.transform.position = new Vector3(obj.transform.position.x + Random.Range(-4, 4), transform.position.y, transform.position.z);
+
             activeObjects.Add(obj);
             remainingObjects.RemoveAt(index);
         }

@@ -18,10 +18,6 @@ public class CubeManager : MonoBehaviour
 
     private int currentRow = 0;
 
-    private int minimunBulletRequirement = 2;
-    private int maximumBulletRequirement = 10;
-
-
     public int rowsPerPowerUp = 5;
     private int currentRowForPowerUp = 0;
 
@@ -77,17 +73,6 @@ public class CubeManager : MonoBehaviour
                     }
 
                     currentRowForPowerUp = 0;
-
-                    minimunBulletRequirement += 2;
-                    maximumBulletRequirement += 4;
-                }
-
-                // set random bullet requirement
-
-                foreach (var cube in cubesRow.GetComponentsInChildren<Cube>())
-                {
-                    int bulletRequirement = Random.Range(minimunBulletRequirement, maximumBulletRequirement);
-                    cube.GetComponent<Cube>().SetBulletRequirement(bulletRequirement);
                 }
 
                 cubes[currentRow].Add(cubesRow);
