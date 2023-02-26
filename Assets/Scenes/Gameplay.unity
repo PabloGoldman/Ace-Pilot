@@ -1073,6 +1073,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildChunk (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4137353555808376779, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5, type: 3}
 --- !u!1 &604314620 stripped
@@ -1286,6 +1291,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildChunk (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4137353555808376779, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5, type: 3}
 --- !u!1 &934155595
@@ -1400,6 +1410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuildChunk (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137353555808376779, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5, type: 3}
@@ -1593,6 +1608,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuildChunk (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137353555808376779, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5, type: 3}
@@ -2112,6 +2132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildChunk (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4137353555808376779, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5, type: 3}
 --- !u!4 &1281015424 stripped
@@ -2458,6 +2483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuildChunk (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137353555808376779, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5, type: 3}
