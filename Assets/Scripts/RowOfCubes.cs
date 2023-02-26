@@ -45,7 +45,7 @@ public class RowOfCubes : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject, 15f);
+            Destroy(gameObject, 10f);
         }
     }
 }

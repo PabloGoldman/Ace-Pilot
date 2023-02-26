@@ -7,7 +7,7 @@ public class TeleportParentOnPlayerTrigger : MonoBehaviour
 
     public CarBehaviour[] carList;
 
-    float offsetZ = 429f;
+    float offsetZ = 351f;  //61.285 multiplicado la cantidad de chunks
 
     private void OnTriggerEnter(Collider other)
     {

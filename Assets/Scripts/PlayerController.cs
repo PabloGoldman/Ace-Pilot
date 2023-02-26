@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        speed += Time.deltaTime / 1800; //Este numero cuanto mas chico es mas acelera xd
+        speed += Time.deltaTime / 1500; //Este numero cuanto mas chico es mas acelera xd
 
         if (Time.time >= nextFireTime)
         {
