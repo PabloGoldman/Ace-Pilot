@@ -59,7 +59,7 @@ public class CubeManager : MonoBehaviour
                 {
                     int randomNumber = Random.Range(1, 100);
 
-                    float randomPosX = Random.Range(-4f, 3.5f);
+                    float randomPosX = Random.Range(-4f, 48f);
 
                     Vector3 spawnPosition = new Vector3(randomPosX, newCubesRowPos.y, cubesRow.transform.position.z + rowSpacing / 2);
 
