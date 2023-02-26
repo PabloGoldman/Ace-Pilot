@@ -470,7 +470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &171205376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1584,8 +1584,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Programming & Management:\nPablo Goldman\n\n3D Artists:\nNicolas\nFederico\nEmanuel\n\n2D
-    Artists:\nNicky Casaux\nLucas\n\nGame Designer: \nJuan Pablo\n\nQA:\nNicolas"
+  m_text: "Programming & Management:\nPablo Goldman\n\n3D Artists:\nNicolas Casalini\nFederico
+    Oviedo\nEmmanuel Barros\n\n2D Artists:\nNicky Casaux\nLucas Qui\xF1ones\n\nGame
+    Designer: \nJuan Pablo Mattarrucco\r\n\nQA:\nNicolas Casalini"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
