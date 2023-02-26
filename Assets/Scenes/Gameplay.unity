@@ -470,7 +470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &171205376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1585,7 +1585,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Programming & Management:\nPablo Goldman\n\n3D Artists:\nNicolas\nFederico\nEmanuel\n\n2D
-    Artists:\nNico\nLucas\n\nGame Designer: \nJuan Pablo\n\nQA:\nNicolas"
+    Artists:\nNicky Casaux\nLucas\n\nGame Designer: \nJuan Pablo\n\nQA:\nNicolas"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1594,8 +1594,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4279447899
+  m_fontColor: {r: 0.35686275, g: 0.19215688, b: 0.07450981, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2576,7 +2576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2060995898
 MonoBehaviour:
   m_ObjectHideFlags: 0
