@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4747328200166631414}
   - component: {fileID: 3201498185102131246}
   m_Layer: 0
-  m_Name: CubeObjectHeinkel
+  m_Name: Heinkel
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

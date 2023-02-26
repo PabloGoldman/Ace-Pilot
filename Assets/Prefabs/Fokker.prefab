@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4747328200166631415}
   - component: {fileID: 4747328200166631414}
   m_Layer: 0
-  m_Name: CubeObject
+  m_Name: Fokker
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,8 +57,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7255762, y: 1, z: 1}
-  m_Center: {x: -1.3639865, y: 0, z: 0}
+  m_Size: {x: 1.7255762, y: 0.9999999, z: 1.2650201}
+  m_Center: {x: -1.3639865, y: 0, z: 0.7034474}
 --- !u!1001 &8618404874221010848
 PrefabInstance:
   m_ObjectHideFlags: 0
