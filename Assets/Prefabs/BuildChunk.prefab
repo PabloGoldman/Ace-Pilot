@@ -320,12 +320,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e892b354d0c1a1d41ae3c40261fb7a1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8c960dc611feabf4d8127e0e2f6d9e69, type: 2}
     - target: {fileID: -6015719662869096779, guid: e11baf004878c4540a2ff716a0820da4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e892b354d0c1a1d41ae3c40261fb7a1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8c960dc611feabf4d8127e0e2f6d9e69, type: 2}
     - target: {fileID: -4974271709471045651, guid: e11baf004878c4540a2ff716a0820da4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -380,17 +380,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e892b354d0c1a1d41ae3c40261fb7a1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8c960dc611feabf4d8127e0e2f6d9e69, type: 2}
     - target: {fileID: -2181417419531403620, guid: e11baf004878c4540a2ff716a0820da4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e892b354d0c1a1d41ae3c40261fb7a1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8c960dc611feabf4d8127e0e2f6d9e69, type: 2}
     - target: {fileID: -910090827413813953, guid: e11baf004878c4540a2ff716a0820da4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e892b354d0c1a1d41ae3c40261fb7a1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8c960dc611feabf4d8127e0e2f6d9e69, type: 2}
     - target: {fileID: -554412481953587602, guid: e11baf004878c4540a2ff716a0820da4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -445,7 +445,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e892b354d0c1a1d41ae3c40261fb7a1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8c960dc611feabf4d8127e0e2f6d9e69, type: 2}
     - target: {fileID: 573623664237001702, guid: e11baf004878c4540a2ff716a0820da4,
         type: 3}
       propertyPath: m_LocalScale.x
