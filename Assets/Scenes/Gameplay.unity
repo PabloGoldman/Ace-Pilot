@@ -2584,9 +2584,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubesPerRow: 5
-  rowSpacing: 40
+  rowSpacing: 20
   rowsPerInstantiate: 2
-  rowSpawningTime: 2
+  rowSpawningTime: 0.5
   rowOfCubes: {fileID: 3054144165668488940, guid: 549f60e96370c2148ae426fad3c58ab9,
     type: 3}
   powerUp:

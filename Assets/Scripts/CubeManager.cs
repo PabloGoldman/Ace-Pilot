@@ -8,7 +8,7 @@ public class CubeManager : MonoBehaviour
     public float rowSpacing = 2.0f; // space between each row
 
     public int rowsPerInstantiate = 2;
-    public float rowSpawningTime = 2;
+    public float rowSpawningTime;
 
     public GameObject rowOfCubes;
     public List<GameObject> powerUp;
