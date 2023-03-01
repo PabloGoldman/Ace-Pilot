@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class OptionsPanel : MonoBehaviour
 {
+#if UNITY_WEBPLAYER
+     public static string webplayerQuitURL = "http://google.com";
+#endif
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+#else
+         Application.Quit();
+#endif
+    }
+
     //public GameObject settingsPanel;
 
     //Animator settingsPanelAnimator;

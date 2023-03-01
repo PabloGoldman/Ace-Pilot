@@ -3229,31 +3229,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 196457498}
     m_Modifications:
-    - target: {fileID: 1707508693195489152, guid: 95f129f0e3c5c44448438c989743122b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+    - target: {fileID: 2088136635, guid: 95f129f0e3c5c44448438c989743122b, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.13216448
       objectReference: {fileID: 0}
+    - target: {fileID: 2088136635, guid: 95f129f0e3c5c44448438c989743122b, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.57198626
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088136635, guid: 95f129f0e3c5c44448438c989743122b, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.8490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088136635, guid: 95f129f0e3c5c44448438c989743122b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 196457500}
     - target: {fileID: 1707508693195489152, guid: 95f129f0e3c5c44448438c989743122b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 171205375}
-    - target: {fileID: 1707508693195489152, guid: 95f129f0e3c5c44448438c989743122b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707508693195489152, guid: 95f129f0e3c5c44448438c989743122b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707508693195489152, guid: 95f129f0e3c5c44448438c989743122b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9166213979989452608, guid: 95f129f0e3c5c44448438c989743122b,
         type: 3}
       propertyPath: m_Name
