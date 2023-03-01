@@ -87,6 +87,7 @@ MonoBehaviour:
   speed: 0.5
   horizontalSpeed: 45
   bulletsTarget: {fileID: 0}
+  rotationSpeed: 0.1
   rotationOffSet: 18
 --- !u!54 &7443141597314711561
 Rigidbody:
@@ -115,8 +116,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.19959696, y: 0.0710951, z: 0.13408802}
-  m_Center: {x: -0.0000037747986, y: 0, z: -0.0018653051}
+  m_Size: {x: 0.20964997, y: 0.0710951, z: 0.07156328}
+  m_Center: {x: 0, y: 0, z: -0.08316732}
 --- !u!1001 &4016674014175575534
 PrefabInstance:
   m_ObjectHideFlags: 0
