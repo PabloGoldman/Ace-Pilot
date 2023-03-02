@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 0.1f;
     public float rotationOffSet = 25f;
 
+    public ParticleSystem deadParticles;
+    public GameObject airplaneModel;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -114,12 +117,20 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.RestartGame();
     }
 
+    void TriggerEndGame()
+    {
+        Destroy(gameObject);
+        ScoreManager.Instance.DisplayFinalScore();
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Cube"))
         {
-            Destroy(gameObject); // Destroy the bullet when it hits a cube
-            ScoreManager.Instance.DisplayFinalScore();
+            deadParticles.Play();
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            airplaneModel.SetActive(false);
+            Invoke(nameof(TriggerEndGame), 1f);
         }
     }
 
