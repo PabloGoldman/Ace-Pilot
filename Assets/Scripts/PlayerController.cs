@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
             deadParticles.Play();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             airplaneModel.SetActive(false);
-            Invoke(nameof(TriggerEndGame), 1f);
+            Invoke(nameof(TriggerEndGame), 1.2f);
         }
     }
 
