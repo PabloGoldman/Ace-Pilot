@@ -77,6 +77,32 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
+        //PARA PC
+        if (Input.GetMouseButton(0))
+        {
+            if (Input.mousePosition.x < Screen.width / 2)
+            {
+                // Mouse click is on the left side of the screen, move player left
+                rb.AddForce(transform.right * horizontalSpeed);
+
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, 180, -rotationOffSet);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
+            else
+            {
+                // Mouse click is on the right side of the screen, move player right
+                rb.AddForce(-transform.right * horizontalSpeed);
+
+                Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, 180, rotationOffSet);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
+        }
+        else
+        {
+            //rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+            Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, 180, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
     }
 
     void FireBullet()
