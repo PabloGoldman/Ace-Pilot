@@ -13,6 +13,7 @@ public class PlayTutorialAnimation : MonoBehaviour
     {
         if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0))
         {
+            //Aca arranca el juego despues de tocar
             Time.timeScale = 1;
             tutorialPanel.SetActive(false);
         }
