@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource[] shootSounds;
     public AudioSource superPowerUpShootSound;
     public AudioSource powerUpTriggerSound;
+    public AudioSource superPowerUpTriggerSound;
     public AudioSource crashSound;
 
     void Start()
@@ -260,7 +261,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!inSuperPowerUp)
             {
-                powerUpTriggerSound.Play();
+                superPowerUpTriggerSound.Play();
                 SetShootAudio(true);
                 Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
                 StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, superPowerUpTime));
