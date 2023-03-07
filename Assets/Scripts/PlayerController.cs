@@ -29,14 +29,15 @@ public class PlayerController : MonoBehaviour
 
     private int collectedPowerUps = 0;
 
+    private float timeBetweenAudioPitchChanger = 0.5f;
+    private float changeAudioPitchTimer;
+
     public AudioSource[] shootSounds;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         nextFireTime = Time.time; // Set the initial next fire time to the current time
-
-        SetShootAudio();
     }
 
     void Update()
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour
         ScoreManager.Instance.DisplayFinalScore();
     }
 
-    void SetShootAudio()
+    public void SetShootAudio()
     {
         if (collectedPowerUps > 4)
         {
