@@ -34,20 +34,30 @@ public class PlayerController : MonoBehaviour
     private float changeAudioPitchTimer;
 
     public AudioSource[] shootSounds;
-    public AudioSource superPowerUpSound;
+    public AudioSource superPowerUpShootSound;
+    public AudioSource powerUpTriggerSound;
     public AudioSource crashSound;
 
     void Start()
     {
-        Debug.Log(shootSounds.Length);
         rb = GetComponent<Rigidbody>();
         nextFireTime = Time.time; // Set the initial next fire time to the current time
     }
 
     void Update()
     {
-        speed += Time.deltaTime / 1500; //Este numero cuanto mas chico es mas acelera xd
+        AcceleratePlayerSpeedOverTime();
+        SetFireBulletTimer();
+    }
 
+    private void FixedUpdate()
+    {
+        MovePlayerForward(speed);
+        MovePlayerWithTouch();
+    }
+
+    void SetFireBulletTimer()
+    {
         if (Time.time >= nextFireTime)
         {
             FireBullet(); // Fire a bullet if enough time has passed and the player has bullets
@@ -55,10 +65,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void AcceleratePlayerSpeedOverTime()
     {
-        MovePlayerForward(speed);
-        MovePlayerWithTouch();
+        speed += Time.deltaTime / 1500; 
     }
 
     void MovePlayerWithTouch()
@@ -168,13 +177,13 @@ public class PlayerController : MonoBehaviour
         if (isSuperPowerUp)
         {
             shootSounds[collectedPowerUps].Stop();
-            superPowerUpSound.Play();
+            superPowerUpShootSound.Play();
         }
         else
         {
-            if (superPowerUpSound.isPlaying)
+            if (superPowerUpShootSound.isPlaying)
             {
-                superPowerUpSound.Stop();
+                superPowerUpShootSound.Stop();
             }
 
             if (collectedPowerUps >= shootSounds.Length - 1)
@@ -236,7 +245,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("PowerUp"))
         {
-            //Sonido power up normal
+            powerUpTriggerSound.Play();
             Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
             fireRate *= 0.7f;
             SetShootAudio(false);
@@ -251,6 +260,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!inSuperPowerUp)
             {
+                powerUpTriggerSound.Play();
                 SetShootAudio(true);
                 Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
                 StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, superPowerUpTime));
