@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Cube"))
         {
             //Aca sonido de muerte
+            shootSounds[collectedPowerUps].Stop();
             deadParticles.Play();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             airplaneModel.SetActive(false);
