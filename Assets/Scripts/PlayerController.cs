@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private int collectedPowerUps = 0;
 
+    public AudioSource[] shootSounds;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -158,23 +160,20 @@ public class PlayerController : MonoBehaviour
 
     void SetShootAudio()
     {
-        switch (collectedPowerUps)
+        if (collectedPowerUps > 4)
         {
-            case 0:
-                //Sonido de cuando tenes 0 power ups
-                break;
-            case 1:
-                //Sonido de cuando tenes 1 power ups
-                break;
-            case 2: 
-                //Sonido de cuando tenes 2 power ups
-                break;
-            case 3:
-                //Sonido de cuando tenes 3 power ups
-                break;
-            default:
-                //Sonido de cuando tenes mas de 3 power ups
-                break;
+            return;
+        }
+
+        else if (collectedPowerUps > 0)
+        {
+            shootSounds[collectedPowerUps - 1].Stop();
+            shootSounds[collectedPowerUps].Play();
+
+        }
+        else
+        {
+            shootSounds[collectedPowerUps].Play();
         }
     }
 
