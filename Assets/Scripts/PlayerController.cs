@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime; // The next time that the player is allowed to fire
 
     public float superPowerUpTime = 4f;
+    bool inSuperPowerUp;
 
     public float speed;
     public float horizontalSpeed;
@@ -33,10 +34,12 @@ public class PlayerController : MonoBehaviour
     private float changeAudioPitchTimer;
 
     public AudioSource[] shootSounds;
+    public AudioSource superPowerUpSound;
     public AudioSource crashSound;
 
     void Start()
     {
+        Debug.Log(shootSounds.Length);
         rb = GetComponent<Rigidbody>();
         nextFireTime = Time.time; // Set the initial next fire time to the current time
     }
@@ -160,29 +163,59 @@ public class PlayerController : MonoBehaviour
         ScoreManager.Instance.DisplayFinalScore();
     }
 
-    public void SetShootAudio()
+    public void SetShootAudio(bool isSuperPowerUp)
     {
-        if (collectedPowerUps > 4)
+        if (isSuperPowerUp)
         {
-            return;
-        }
-
-        else if (collectedPowerUps > 0)
-        {
-            shootSounds[collectedPowerUps - 1].Stop();
-            shootSounds[collectedPowerUps].Play();
-
+            shootSounds[collectedPowerUps].Stop();
+            superPowerUpSound.Play();
         }
         else
         {
-            shootSounds[collectedPowerUps].Play();
+            if (superPowerUpSound.isPlaying)
+            {
+                superPowerUpSound.Stop();
+            }
+
+            if (collectedPowerUps >= shootSounds.Length - 1)
+            {
+                return;
+            }
+            else
+            {
+                if (collectedPowerUps > 0)
+                {
+                    shootSounds[collectedPowerUps - 1].Stop();
+                    shootSounds[collectedPowerUps].Play();
+                }
+                else
+                {
+                    //Aca solo entra la primera vez
+                    shootSounds[0].Play();
+                }
+            }
+        }
+    }
+
+    void StopShootSounds()
+    {
+        if (collectedPowerUps < shootSounds.Length - 1)
+        {
+            shootSounds[collectedPowerUps].Stop();
+        }
+        else
+        {
+            shootSounds[shootSounds.Length - 1].Stop();
         }
     }
 
     IEnumerator SetFireRateToSuperPowerUp(float normalFireRate, float newFireRate, float superPowerUpTime)
     {
+        inSuperPowerUp = true;
         fireRate = newFireRate;
         yield return new WaitForSeconds(superPowerUpTime);
+        inSuperPowerUp = false;
+        SetShootAudio(false);
         SetFireRateToNormal(normalFireRate);
     }
 
@@ -190,8 +223,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cube"))
         {
+            StopShootSounds();
             crashSound.Play();
-            shootSounds[collectedPowerUps].Stop();
             deadParticles.Play();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             airplaneModel.SetActive(false);
@@ -206,15 +239,22 @@ public class PlayerController : MonoBehaviour
             //Sonido power up normal
             Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
             fireRate *= 0.7f;
-            collectedPowerUps++;
-            SetShootAudio();
+            SetShootAudio(false);
+
+            if (collectedPowerUps < shootSounds.Length - 1)
+            {
+                collectedPowerUps++;
+            }
         }
 
         if (other.CompareTag("SuperPowerUp"))
         {
-            //Sonido super power up
-            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
-            StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, superPowerUpTime));
+            if (!inSuperPowerUp)
+            {
+                SetShootAudio(true);
+                Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+                StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, superPowerUpTime));
+            }
         }
     }
 }

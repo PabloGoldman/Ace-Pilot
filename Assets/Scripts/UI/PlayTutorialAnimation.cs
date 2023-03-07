@@ -22,9 +22,8 @@ public class PlayTutorialAnimation : MonoBehaviour
         {
             //Aca arranca el juego despues de tocar
             Time.timeScale = 1;
-            player.SetShootAudio();
+            player.SetShootAudio(false);
             tutorialPanel.SetActive(false);
-
         }
     }
 }
