@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private float changeAudioPitchTimer;
 
     public AudioSource[] shootSounds;
+    public AudioSource crashSound;
 
     void Start()
     {
@@ -189,7 +190,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cube"))
         {
-            //Aca sonido de muerte
+            crashSound.Play();
             shootSounds[collectedPowerUps].Stop();
             deadParticles.Play();
             rb.constraints = RigidbodyConstraints.FreezeAll;
