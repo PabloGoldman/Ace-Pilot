@@ -1093,6 +1093,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab26f9e3cbaa914cb841c60e28fb0e5, type: 3}
+--- !u!82 &502819717 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 502819717, guid: 899bcdb7c86d2f04f8775765f5d69342,
+    type: 3}
+  m_PrefabInstance: {fileID: 7443141595915587171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &604314620 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9166213979989452608, guid: 95f129f0e3c5c44448438c989743122b,
@@ -2978,31 +2984,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1804575967263837640, guid: 899bcdb7c86d2f04f8775765f5d69342,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0407b3337cb217e438a08614f37b2f46, type: 3}
     - target: {fileID: 3099922775100077341, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_Volume
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4897163315471823163, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_Volume
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5148495757766610486, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_Volume
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6836095183015324495, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_Volume
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7443141597314711559, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7443141597314711562, guid: 899bcdb7c86d2f04f8775765f5d69342,
+        type: 3}
+      propertyPath: superPowerUpTriggerSound
+      value: 
+      objectReference: {fileID: 502819717}
     - target: {fileID: 7443141597314711563, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_RootOrder
@@ -3061,7 +3077,7 @@ PrefabInstance:
     - target: {fileID: 7470998782145891468, guid: 899bcdb7c86d2f04f8775765f5d69342,
         type: 3}
       propertyPath: m_Volume
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 899bcdb7c86d2f04f8775765f5d69342, type: 3}
