@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    bool isMuted;
-
     public void MuteAudio()
     {
-        if (!isMuted)
+        if (AudioListener.volume == 1)
         {
             AudioListener.volume = 0;
-            isMuted = true;
         }
         else
         {
             AudioListener.volume = 1;
-            isMuted = false;
         }
     }
 }

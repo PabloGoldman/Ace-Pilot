@@ -15,9 +15,16 @@ public class ButtonSpriteChange : MonoBehaviour
     {
         buttonImage = GetComponent<Image>();
 
-        isOriginalSprite = true;
-
-        buttonImage.sprite = originalSprite;
+        if (AudioListener.volume == 0)
+        {
+            isOriginalSprite = false;
+            buttonImage.sprite = touchedSprite;
+        }
+        else
+        {
+            isOriginalSprite = true;
+            buttonImage.sprite = originalSprite;
+        }
     }
 
     public void SwapSprite()
