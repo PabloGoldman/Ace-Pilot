@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime; // The next time that the player is allowed to fire
 
     public float superPowerUpTime = 4f;
+    bool inSuperPowerUp;
 
     public float speed;
     public float horizontalSpeed;
@@ -29,18 +30,35 @@ public class PlayerController : MonoBehaviour
 
     private int collectedPowerUps = 0;
 
+    private float timeBetweenAudioPitchChanger = 0.5f;
+    private float changeAudioPitchTimer;
+
+    public AudioSource[] shootSounds;
+    public AudioSource superPowerUpShootSound;
+    public AudioSource powerUpTriggerSound;
+    public AudioSource superPowerUpTriggerSound;
+    public AudioSource crashSound;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         nextFireTime = Time.time; // Set the initial next fire time to the current time
-
-        SetShootAudio();
     }
 
     void Update()
     {
-        speed += Time.deltaTime / 1500; //Este numero cuanto mas chico es mas acelera xd
+        AcceleratePlayerSpeedOverTime();
+        SetFireBulletTimer();
+    }
 
+    private void FixedUpdate()
+    {
+        MovePlayerForward(speed);
+        MovePlayerWithTouch();
+    }
+
+    void SetFireBulletTimer()
+    {
         if (Time.time >= nextFireTime)
         {
             FireBullet(); // Fire a bullet if enough time has passed and the player has bullets
@@ -48,10 +66,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void AcceleratePlayerSpeedOverTime()
     {
-        MovePlayerForward(speed);
-        MovePlayerWithTouch();
+        speed += Time.deltaTime / 1500; 
     }
 
     void MovePlayerWithTouch()
@@ -156,32 +173,59 @@ public class PlayerController : MonoBehaviour
         ScoreManager.Instance.DisplayFinalScore();
     }
 
-    void SetShootAudio()
+    public void SetShootAudio(bool isSuperPowerUp)
     {
-        switch (collectedPowerUps)
+        if (isSuperPowerUp)
         {
-            case 0:
-                //Sonido de cuando tenes 0 power ups
-                break;
-            case 1:
-                //Sonido de cuando tenes 1 power ups
-                break;
-            case 2: 
-                //Sonido de cuando tenes 2 power ups
-                break;
-            case 3:
-                //Sonido de cuando tenes 3 power ups
-                break;
-            default:
-                //Sonido de cuando tenes mas de 3 power ups
-                break;
+            shootSounds[collectedPowerUps].Stop();
+            superPowerUpShootSound.Play();
+        }
+        else
+        {
+            if (superPowerUpShootSound.isPlaying)
+            {
+                superPowerUpShootSound.Stop();
+            }
+
+            if (collectedPowerUps >= shootSounds.Length - 1)
+            {
+                return;
+            }
+            else
+            {
+                if (collectedPowerUps > 0)
+                {
+                    shootSounds[collectedPowerUps - 1].Stop();
+                    shootSounds[collectedPowerUps].Play();
+                }
+                else
+                {
+                    //Aca solo entra la primera vez
+                    shootSounds[0].Play();
+                }
+            }
+        }
+    }
+
+    void StopShootSounds()
+    {
+        if (collectedPowerUps < shootSounds.Length - 1)
+        {
+            shootSounds[collectedPowerUps].Stop();
+        }
+        else
+        {
+            shootSounds[shootSounds.Length - 1].Stop();
         }
     }
 
     IEnumerator SetFireRateToSuperPowerUp(float normalFireRate, float newFireRate, float superPowerUpTime)
     {
+        inSuperPowerUp = true;
         fireRate = newFireRate;
         yield return new WaitForSeconds(superPowerUpTime);
+        inSuperPowerUp = false;
+        SetShootAudio(false);
         SetFireRateToNormal(normalFireRate);
     }
 
@@ -189,7 +233,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cube"))
         {
-            //Aca sonido de muerte
+            StopShootSounds();
+            crashSound.Play();
             deadParticles.Play();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             airplaneModel.SetActive(false);
@@ -201,18 +246,26 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("PowerUp"))
         {
-            //Sonido power up normal
+            powerUpTriggerSound.Play();
             Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
             fireRate *= 0.7f;
-            collectedPowerUps++;
-            SetShootAudio();
+            SetShootAudio(false);
+
+            if (collectedPowerUps < shootSounds.Length - 1)
+            {
+                collectedPowerUps++;
+            }
         }
 
         if (other.CompareTag("SuperPowerUp"))
         {
-            //Sonido super power up
-            Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
-            StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, superPowerUpTime));
+            if (!inSuperPowerUp)
+            {
+                superPowerUpTriggerSound.Play();
+                SetShootAudio(true);
+                Destroy(other.gameObject); // Destroy the power-up GameObject when picked up
+                StartCoroutine(SetFireRateToSuperPowerUp(fireRate, 0f, superPowerUpTime));
+            }
         }
     }
 }

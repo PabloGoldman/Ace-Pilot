@@ -4,6 +4,13 @@ public class PlayTutorialAnimation : MonoBehaviour
 {
     public GameObject tutorialPanel;
 
+    PlayerController player;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<PlayerController>();
+    }
+
     private void Start()
     {
         Time.timeScale = 0;
@@ -15,6 +22,7 @@ public class PlayTutorialAnimation : MonoBehaviour
         {
             //Aca arranca el juego despues de tocar
             Time.timeScale = 1;
+            player.SetShootAudio(false);
             tutorialPanel.SetActive(false);
         }
     }

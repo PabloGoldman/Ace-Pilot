@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239706544957822589}
   - component: {fileID: 239706544957822584}
+  - component: {fileID: 8759345921109038451}
   - component: {fileID: 239706544957822587}
   - component: {fileID: 239706544957822586}
   m_Layer: 5
@@ -47,6 +48,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239706544957822588}
   m_CullTransparentMesh: 1
+--- !u!114 &8759345921109038451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239706544957822588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e2ad9b9a4f1ee4f8f4e73748351c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalSprite: {fileID: 21300000, guid: e51c73bb0aad20e4f826fc0ace9de89f, type: 3}
+  touchedSprite: {fileID: 21300000, guid: 41089c745938ea2438e5c72f4d79e336, type: 3}
 --- !u!114 &239706544957822587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +82,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b8ab2559612f0694196afdb51695573b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e51c73bb0aad20e4f826fc0ace9de89f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -96,7 +111,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -120,7 +135,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239706544957822587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: MuteAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &239706545624394801
 GameObject:
   m_ObjectHideFlags: 0
