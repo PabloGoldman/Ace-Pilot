@@ -28,9 +28,6 @@ public class PlayerController : MonoBehaviour
 
     private int collectedPowerUps = 0;
 
-    private float timeBetweenAudioPitchChanger = 0.5f;
-    private float changeAudioPitchTimer;
-
     public AudioSource[] shootSounds;
     public AudioSource superPowerUpShootSound;
     public AudioSource powerUpTriggerSound;
