@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,9 +27,6 @@ public class PlayerController : MonoBehaviour
     public GameObject airplaneModel;
 
     private int collectedPowerUps = 0;
-
-    private float timeBetweenAudioPitchChanger = 0.5f;
-    private float changeAudioPitchTimer;
 
     public AudioSource[] shootSounds;
     public AudioSource superPowerUpShootSound;
@@ -160,11 +155,6 @@ public class PlayerController : MonoBehaviour
     {
         //Aca volves a la normalidad del super power up
         fireRate = normalFireRate;
-    }
-
-    public void RestartGame()
-    {
-        GameManager.Instance.RestartGame();
     }
 
     void TriggerEndGame()
