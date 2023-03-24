@@ -157,11 +157,6 @@ public class PlayerController : MonoBehaviour
         fireRate = normalFireRate;
     }
 
-    public void RestartGame()
-    {
-        GameManager.Instance.RestartGame();
-    }
-
     void TriggerEndGame()
     {
         Destroy(gameObject);
